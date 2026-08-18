@@ -2,6 +2,9 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* 여기주차 — mobile mini app design system */
+
+
 @custom-variant dark (&:is(.dark *));
 
 /*
