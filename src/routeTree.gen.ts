@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as LotLotIdRouteImport } from './routes/lot.$lotId'
+import { Route as TimerActiveRouteImport } from './routes/timer.active'
+import { Route as TimerDoneRouteImport } from './routes/timer.done'
+import { Route as TimerSetupRouteImport } from './routes/timer.setup'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +37,39 @@ const LotLotIdRoute = LotLotIdRouteImport.update({
   path: '/lot/$lotId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TimerActiveRoute = TimerActiveRouteImport.update({
+  id: '/timer/active',
+  path: '/timer/active',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimerDoneRoute = TimerDoneRouteImport.update({
+  id: '/timer/done',
+  path: '/timer/done',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimerSetupRoute = TimerSetupRouteImport.update({
+  id: '/timer/setup',
+  path: '/timer/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/results': typeof ResultsRoute
   '/search': typeof SearchRoute
   '/lot/$lotId': typeof LotLotIdRoute
+  '/timer/active': typeof TimerActiveRoute
+  '/timer/done': typeof TimerDoneRoute
+  '/timer/setup': typeof TimerSetupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/results': typeof ResultsRoute
   '/search': typeof SearchRoute
   '/lot/$lotId': typeof LotLotIdRoute
+  '/timer/active': typeof TimerActiveRoute
+  '/timer/done': typeof TimerDoneRoute
+  '/timer/setup': typeof TimerSetupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +77,38 @@ export interface FileRoutesById {
   '/results': typeof ResultsRoute
   '/search': typeof SearchRoute
   '/lot/$lotId': typeof LotLotIdRoute
+  '/timer/active': typeof TimerActiveRoute
+  '/timer/done': typeof TimerDoneRoute
+  '/timer/setup': typeof TimerSetupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/results' | '/search' | '/lot/$lotId'
+  fullPaths:
+    | '/'
+    | '/results'
+    | '/search'
+    | '/lot/$lotId'
+    | '/timer/active'
+    | '/timer/done'
+    | '/timer/setup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/results' | '/search' | '/lot/$lotId'
-  id: '__root__' | '/' | '/results' | '/search' | '/lot/$lotId'
+  to:
+    | '/'
+    | '/results'
+    | '/search'
+    | '/lot/$lotId'
+    | '/timer/active'
+    | '/timer/done'
+    | '/timer/setup'
+  id:
+    | '__root__'
+    | '/'
+    | '/results'
+    | '/search'
+    | '/lot/$lotId'
+    | '/timer/active'
+    | '/timer/done'
+    | '/timer/setup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +116,9 @@ export interface RootRouteChildren {
   ResultsRoute: typeof ResultsRoute
   SearchRoute: typeof SearchRoute
   LotLotIdRoute: typeof LotLotIdRoute
+  TimerActiveRoute: typeof TimerActiveRoute
+  TimerDoneRoute: typeof TimerDoneRoute
+  TimerSetupRoute: typeof TimerSetupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +151,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LotLotIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/timer/active': {
+      id: '/timer/active'
+      path: '/timer/active'
+      fullPath: '/timer/active'
+      preLoaderRoute: typeof TimerActiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timer/done': {
+      id: '/timer/done'
+      path: '/timer/done'
+      fullPath: '/timer/done'
+      preLoaderRoute: typeof TimerDoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timer/setup': {
+      id: '/timer/setup'
+      path: '/timer/setup'
+      fullPath: '/timer/setup'
+      preLoaderRoute: typeof TimerSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +180,9 @@ const rootRouteChildren: RootRouteChildren = {
   ResultsRoute: ResultsRoute,
   SearchRoute: SearchRoute,
   LotLotIdRoute: LotLotIdRoute,
+  TimerActiveRoute: TimerActiveRoute,
+  TimerDoneRoute: TimerDoneRoute,
+  TimerSetupRoute: TimerSetupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
