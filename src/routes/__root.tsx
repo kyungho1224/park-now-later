@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AppStoreProvider } from "@/lib/app-store";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "여기주차 — 주변 주차장 추천" },
+      { name: "description", content: "예상 주차시간 기준으로 주변 주차장을 비교하고 주차 타이머로 요금을 관리하세요." },
+      { name: "author", content: "여기주차" },
+      { property: "og:title", content: "여기주차" },
+      { property: "og:description", content: "주차장 추천과 주차 타이머를 한 앱에서." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -120,7 +121,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AppStoreProvider>
+        <Outlet />
+      </AppStoreProvider>
     </QueryClientProvider>
   );
 }
