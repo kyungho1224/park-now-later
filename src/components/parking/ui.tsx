@@ -93,7 +93,7 @@ export function Chip({
   );
 }
 
-export function LiveBadge({ status, spots }: { status: LiveStatus; spots?: number }) {
+export function LiveBadge({ status, spots }: { status: LiveStatus; spots?: number | undefined }) {
   const map: Record<LiveStatus, string> = {
     free: "bg-success-soft text-success",
     busy: "bg-warning-soft text-warning-foreground",
