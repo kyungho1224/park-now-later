@@ -19,7 +19,7 @@ export const Route = createFileRoute("/timer/setup")({
       },
     ],
   }),
-  component: TimerSetup;
+  component: TimerSetup,
 });
 
 const FREE = [0, 10, 30, 60];
