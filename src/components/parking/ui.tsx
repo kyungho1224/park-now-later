@@ -16,7 +16,7 @@ export function Screen({
 }) {
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-[420px] flex-col bg-background">
-      <div className={cn("flex-1 px-5 pt-3", dock ? "pb-40" : "pb-10", className)}>{children}</div>
+      <div className={cn("flex-1 px-5 pt-3", dock ? "pb-52" : "pb-10", className)}>{children}</div>
       {dock ? (
         <div className="fixed inset-x-0 bottom-0 z-20 mx-auto w-full max-w-[420px] safe-bottom border-t border-border/60 bg-card/95 px-5 pt-3 shadow-dock backdrop-blur">
           {dock}
